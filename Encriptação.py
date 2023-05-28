@@ -4,7 +4,7 @@ def encode(key, str):
     encoded = ""
     for i in range(len(str)):
         char = str[i]
-        if char.isspace():
+        if char.isspace() or not char.isalpha():
             encoded += char
         elif char.isupper():
             encoded += chr((ord(char) + key - 65) % 26 + 65) #desloca o valor numérico ASCII do caractere pela chave e subtrai 65: %26 para garantir que o valor permaneça entre 0 e 25, e adiciona 65 para obter o valor numérico ASCII do caractere codificado.
@@ -16,7 +16,7 @@ def decode(key, str):
     decoded = ""
     for i in range(len(str)):
         char = str[i]
-        if char.isspace():
+        if char.isspace() or not char.isalpha():
             decoded += char
         elif char.isupper():
             decoded += chr((ord(char) - key - 65) % 26 + 65)
@@ -31,7 +31,7 @@ def strencode(str):
     encoded = ""
     strup = str.upper()
     for index in range(len(str)):
-        if strup[index].isspace():
+        if strup[index].isspace() or not strup[index].isalpha():
             encoded += strup[index]
         elif index % 2 == 0:
             for i in range(len(string.ascii_uppercase)):
@@ -49,7 +49,7 @@ def strdecode(str):
     decoded = ""
     strup = str.upper()
     for index in range(len(str)):
-        if strup[index].isspace():
+        if strup[index].isspace() or strup[index].isalpha():
             decoded += strup[index]
         elif index % 2 == 0:
             for i in range(len(string.ascii_uppercase)):
